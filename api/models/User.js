@@ -7,15 +7,14 @@ const User = sequelize.define(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     password: {
       type: DataTypes.STRING,
@@ -23,7 +22,9 @@ const User = sequelize.define(
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // createdAt ve updatedAt otomatik olsun
+    createdAt: "created_at", // Veritabanında snake_case kullanıldığı için belirtiyoruz
+    updatedAt: "updated_at", // Aynı şekilde updatedAt için de
   }
 );
 
